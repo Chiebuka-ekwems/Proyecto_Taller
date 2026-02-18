@@ -14,6 +14,8 @@ public class MainView
             //Menu
             mostrarMenu();
             int opcion = sc.nextInt();
+            //Pongo un nextLine depues de leer numeros para eliminar el enter fantasma depues de los nextInt o double
+            sc.nextLine();
             realizarOpcionMenu(opcion,sc, controlador);
             
             //Submenus
@@ -250,19 +252,19 @@ public class MainView
     //Crud Cliente
     private static void registrarCliente (Scanner sc, Controlador controlador){
         print("Introduce tu nombre: \n");
-        String csv = sc.next() + ";";
+        String csv = sc.nextLine() + ";";
         println("Introduce primer apellido:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce segundo apellido:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce tu dni:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce primer email:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce primer tlfno:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce primer codigo:");
-        csv += sc.next();
+        csv += sc.nextLine();
         boolean creado = controlador.addCliente(csv);
         if(creado) println("Cliente creado");
         else println("Error cliente no creado");
@@ -270,7 +272,7 @@ public class MainView
     
     private static void buscarClientePorDni (Scanner sc, Controlador controlador){
         println("Introduce el dni del cliente");
-        String dni=sc.next();
+        String dni=sc.nextLine();
         
         Cliente c = controlador.getClientePorDni(dni);
         String datos = c.toString();
@@ -281,19 +283,19 @@ public class MainView
     //Crud Mecanico
     private static void registrarMecanico (Scanner sc, Controlador controlador){
         print("Introduce tu nombre: \n");
-        String csv = sc.next() + ";";
+        String csv = sc.nextLine() + ";";
         println("Introduce primer apellido:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce segundo apellido:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce tu dni:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce primer email:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce primer tlfno:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce primer codigo:");
-        csv += sc.next();
+        csv += sc.nextLine();
         boolean creado = controlador.addMecanico(csv);
         if(creado) println("Mecanico creado");
         else println("Error mecanico no creado");
@@ -301,7 +303,7 @@ public class MainView
     
     private static void buscarMecanicoPorDni (Scanner sc, Controlador controlador){
         println("Introduce el dni del cliente");
-        String dni=sc.next();
+        String dni=sc.nextLine();
         
         Mecanico m = controlador.getMecanicoPorDni(dni);
         String datos = m.toString();
@@ -311,18 +313,19 @@ public class MainView
     //Crud Vehiculo
     private static void registrarVehiculo (Scanner sc, Controlador controlador){
         print("Introduce el dni del dueño del coche: \n");
-        String dniDueno = sc.next();
+        String dniDueno = sc.nextLine();
         print("Que tipo de vehiculo vas a añadir: \n");
         print("| 1-Moto | 2-Coche | 3-Camion | 4-Furgon |: \n");
         int tipoVehi = sc.nextInt();
+        sc.nextLine();
         println("Introduce la matrícula del vehículo:");
-        String csv = sc.next() + ";";
+        String csv = sc.nextLine() + ";";
         println("Introduce el modelo del vehículo:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce la fecha de entrada:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         println("Introduce la hora de entrada:");
-        csv += sc.next() + ";";
+        csv += sc.nextLine() + ";";
         
         boolean creado = controlador.addVehiculo(csv, dniDueno, tipoVehi);
         if(creado) println("Vehiculo creado");
@@ -331,7 +334,7 @@ public class MainView
     
     private static void buscarVehiculoMatricula (Scanner sc, Controlador controlador){
         println("Introduce la matricula de tu vehiculo");
-        String matricula=sc.next();
+        String matricula=sc.nextLine();
         
         Vehiculo v = controlador.getVehiculoPorMatricula(matricula);
         String datos = v.toString();
@@ -350,7 +353,7 @@ public class MainView
         println("Introduce número del 1 al 4 según el tipo de vehiculo que quieres:");
         println("| 1-Moto | 2-Coche | 3-Camion | 4-Furgon |");
         int tipo = sc.nextInt();
-        
+        sc.nextLine();
         imprimirDatos(Controlador.getSingleton().listarVehiculoTipo(tipo));
         
     }
@@ -358,17 +361,18 @@ public class MainView
     //Crud trabajos Taller
     private static void registrarTrabajo (Scanner sc, Controlador controlador){
         print("Introduce el dni del mecanico: \n");
-        String dniMecanico= sc.next();
+        String dniMecanico= sc.nextLine();
         print("Introduce la matricula del Vehiculo: \n");
-        String matriculaVehi = sc.next() ;
+        String matriculaVehi = sc.nextLine() ;
         println("Introduce la descripcion del trabajo a realizar:");
-        String description = sc.next();
+        String description = sc.nextLine();
         println("Introduce las horas prevista:");
         double horasPrevistas = sc.nextDouble();
+        sc.nextLine();
         println("Introduce la fecha de entrada:");
-        String fechaEntrada = sc.next();
+        String fechaEntrada = sc.nextLine();
         println("Introduce la hora de entrada:");
-        String horaEntrada = sc.next();
+        String horaEntrada = sc.nextLine();
         
         boolean creado = controlador.addTrabajo(dniMecanico, matriculaVehi,description,horasPrevistas,fechaEntrada,horaEntrada);
         if(creado) println("Trabajo creado");
@@ -381,7 +385,7 @@ public class MainView
     
     public static void listarTrabajoCliente(Scanner sc){
         print("Introduce el dni del Cliente para obtener su trabajos: ");
-        String dniCliente = sc.next();
+        String dniCliente = sc.nextLine();
         imprimirDatos(Controlador.getSingleton().listarTrabajoCliente(dniCliente));        
     }
     
