@@ -249,16 +249,18 @@ public class Controlador
     
     public String listarTrabajoCliente(String dni){
         String resultado="";
+        Cliente c = getClientePorDni(dni);
         
-        for (Cliente c: misClientes){
-            if (c.getDni().equals(dni)){
-                for (Vehiculo v: c.getVehiculos()){
-                    for (TrabajoTaller t: v.getTrabajos()){
-                        resultado += t.toString() + "\n";
-                    }
-                }
-            }
+        if(c==null){
+            return "No existe ningún cliente con el dni: " + dni;
         }
+                    
+        for (Vehiculo v: c.getVehiculos()){
+            for (TrabajoTaller t: v.getTrabajos()){
+                 resultado += t.toString() + "\n";
+            }
+        }            
+        
         return TrabajoTaller.getCsvFormato() + "\n" + resultado;
     }
     /*
