@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Furgon
+comment1.params=matricula\ modelo\ fechaEntrada\ horaEntrada\ dueno
+comment1.target=Furgon(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Cliente)
+comment2.params=
+comment2.target=double\ getPrecioHora()
+comment3.params=
+comment3.target=double\ getPlusDificil()
+comment4.params=
+comment4.target=double\ getPrecio()
+numComments=5
