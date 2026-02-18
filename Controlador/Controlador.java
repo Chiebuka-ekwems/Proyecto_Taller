@@ -246,6 +246,21 @@ public class Controlador
         return TrabajoTaller.getCsvFormato() + "\n" + resultado;
         
     }
+    
+    public String listarTrabajoCliente(String dni){
+        String resultado="";
+        
+        for (Cliente c: misClientes){
+            if (c.getDni().equals(dni)){
+                for (Vehiculo v: c.getVehiculos()){
+                    for (TrabajoTaller t: v.getTrabajos()){
+                        resultado += t.toString() + "\n";
+                    }
+                }
+            }
+        }
+        return TrabajoTaller.getCsvFormato() + "\n" + resultado;
+    }
     /*
      * public boolean addCliente (String csvCliente){
         String[] datos = csvCliente.split(";");

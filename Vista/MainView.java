@@ -190,7 +190,7 @@ public class MainView
                 listarClientes();
                 break;
             case 5: 
-                listarTrabajoCliente();
+                listarTrabajoCliente(sc);
                 break;
             case -2:
                 println("Volviendo hacia atras");
@@ -379,8 +379,10 @@ public class MainView
         imprimirDatos(Controlador.getSingleton().listarTrabajosNoPagados());
     }
     
-    public static void listarTrabajoCliente(){
-        
+    public static void listarTrabajoCliente(Scanner sc){
+        print("Introduce el dni del Cliente para obtener su trabajos: ");
+        String dniCliente = sc.next();
+        imprimirDatos(Controlador.getSingleton().listarTrabajoCliente(dniCliente));        
     }
     
     

@@ -57,6 +57,10 @@ public abstract class Vehiculo
         return horaEntrada;
     }
     
+    public List<TrabajoTaller> getTrabajos(){
+        return misTrabajos;
+    }
+    
     
     //CRUD Trabajos
     public boolean addTrabajoTaller(TrabajoTaller tt){
